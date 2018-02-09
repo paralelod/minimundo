@@ -1,0 +1,1 @@
+python manage.py runserver --settings=minimundo.local_settings
