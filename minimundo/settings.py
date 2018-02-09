@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'minimundo.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': diogorusso.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'diogorusso',
         'USER': 'diogorusso',
         'PASSWORD': '',
