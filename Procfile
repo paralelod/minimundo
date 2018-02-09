@@ -1,0 +1,1 @@
+web: gunicorn minimundo.wsgi --log-file -

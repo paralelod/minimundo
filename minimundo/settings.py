@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
+import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -23,9 +24,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'xkfj_9z58$es+1$&8wh$934#ki6x@u$f6t#9t=3%jv33eg_wax'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1','localhost', 'diogorusso.pythonanywhere.com']
+ALLOWED_HOSTS = ['127.0.0.1','localhost', 'diogorusso.pythonanywhere.com', '.herokuapp.com']
 
 
 # Application definition
@@ -76,8 +77,12 @@ WSGI_APPLICATION = 'minimundo.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': diogorusso.db.backends.postgresql_psycopg2',
+        'NAME': 'diogorusso',
+        'USER': 'diogorusso',
+        'PASSWORD': '',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
 
@@ -121,3 +126,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 LOGIN_REDIRECT_URL = '/'
+
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
